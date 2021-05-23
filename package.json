@@ -11,7 +11,7 @@
     "client:sass": "sass --watch './src/scss/index.scss' './public/index.css' --style compressed",
     "client:webpack": "webpack serve --config webpack.config.dev.js",
     "client": "concurrently \"npm:client:*\"",
-    "build:server": "babel src --out-dir lib",
+    "build:server": "./node_modules/.bin/babel src --out-dir lib",
     "build:client": "webpack --env prod --env min",
     "start": "npm run build:server && npm run build:client && node index.js"
   },
