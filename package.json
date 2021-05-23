@@ -13,8 +13,7 @@
     "client": "concurrently \"npm:client:*\"",
     "build:server": "babel src --out-dir lib",
     "build:client": "webpack --env prod --env min",
-    "build": "concurrently \"npm:build:*\"",
-    "start": "concurrently \"npm:build:*\" \"node index.js\""
+    "start": "npm run build:server && npm run build:client && node index.js"
   },
   "repository": {
     "type": "git",
