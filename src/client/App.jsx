@@ -1,22 +1,29 @@
-import React, { useState } from 'react'
-import style from './App.css'
+import React from 'react'
+import { Switch, Route, NavLink, Link } from 'react-router-dom'
+import loadable from '@loadable/component'
+import './App.css'
 
-const App = () => {
-    const [count, setCount] = useState(0)
+const Home = loadable(() => import('./pages/Home'))
+const List = loadable(() => import('./pages/List'))
 
-    const add = () => setCount(count+1)
-    const min = () => setCount(count-1)
-    const reset = () => setCount(0)
-
-    return <React.Fragment>
-        <h1>This is App</h1>
-        <button className={style.bismillah} onClick={reset}>reset</button>
-        <br></br>
-        <h1>{count}</h1>
-        <br></br>
-        <button onClick={add}>plus</button>
-        <button onClick={min}>min</button>
-    </React.Fragment>
+export default function App() {
+    return (
+        <>
+            <div>
+                <NavLink to="/home">Home</NavLink>
+                <NavLink to="/list">List</NavLink>
+            </div>
+            <div>
+                <Link to="/">Home</Link>
+                <Link to="/list">List</Link>
+            </div>
+            <Switch>
+                <Route path="/" exact >
+                    <h1 className="bismillah">Apa ya</h1>
+                </Route>
+                <Route path="/home" component={Home} />
+                <Route path="/list" component={List} />
+            </Switch>
+        </>
+    )
 }
-
-export default App 

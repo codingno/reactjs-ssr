@@ -2,6 +2,7 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const LoadablePlugin = require('@loadable/webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const sharedConfig = require('./webpack.shared.config.js');
 
 const clientPort = process.env.PORT || 8080;
@@ -22,34 +23,24 @@ const config = {
 
     devServer: { 
         port: clientPort, // [C]
-        contentBase: path.join(__dirname, 'public'),
-        compress: true,
-        hot: true,
-        proxy: [
-            {
-            // context: ['/auth', '/api'],
-            context: ['/'],
-            target: `http://localhost:${3001}`,
-            },
-        ],
+        liveReload: true
     },
 
     module: {
         rules: [{
             test: /\.css$/, // [D]
             use: [
-                // 'style-loader',
+                'style-loader',
                 MiniCssExtractPlugin.loader,
-                // {
-                //     loader: 'css-loader',
-                //     options: {
-                //         modules: {
-                //             exportLocalsConvention: 'camelCase',
-                //             localIdentName: '[local]_[hash:base64:5]',
-                //         },
-                //     },
-                // },
-                'css-loader',
+                {
+                    loader: 'css-loader',
+                    options: {
+                        modules: {
+                            exportLocalsConvention: 'camelCase',
+                            localIdentName: '[local]_[hash:base64:5]',
+                        },
+                    },
+                },
             ],
         }],
     },
@@ -59,6 +50,7 @@ const config = {
             filename: 'bundle.css', // [D]
         }),
         new LoadablePlugin(),
+        new BundleAnalyzerPlugin(),
     ],
     mode : 'production',
 };

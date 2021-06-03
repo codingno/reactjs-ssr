@@ -1,0 +1,108 @@
+{
+  "hash": "875c6216027ecb3d2e85",
+  "publicPath": "/",
+  "outputPath": "/home/hasby/projects/reactjs-ssr/public",
+  "assetsByChunkName": {
+    "main": [
+      "bundle.css",
+      "bundle.js"
+    ],
+    "pages-Home": [
+      "354.bundle.css",
+      "354.bundle.js"
+    ],
+    "pages-List": [
+      "648.bundle.js"
+    ]
+  },
+  "assets": [
+    {
+      "type": "assets by status",
+      "cached": true,
+      "filteredChildren": 5,
+      "size": 171572
+    }
+  ],
+  "namedChunkGroups": {
+    "main": {
+      "name": "main",
+      "chunks": [
+        179
+      ],
+      "assets": [
+        {
+          "name": "bundle.css"
+        },
+        {
+          "name": "bundle.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {}
+    },
+    "pages-Home": {
+      "name": "pages-Home",
+      "chunks": [
+        354
+      ],
+      "assets": [
+        {
+          "name": "354.bundle.css"
+        },
+        {
+          "name": "354.bundle.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {}
+    },
+    "pages-List": {
+      "name": "pages-List",
+      "chunks": [
+        648
+      ],
+      "assets": [
+        {
+          "name": "648.bundle.js"
+        }
+      ],
+      "filteredAssets": 0,
+      "assetsSize": null,
+      "filteredAuxiliaryAssets": 0,
+      "auxiliaryAssetsSize": 0,
+      "children": {},
+      "childAssets": {}
+    }
+  },
+  "generator": "loadable-components",
+  "chunks": [
+    {
+      "id": 179,
+      "files": [
+        "bundle.css",
+        "bundle.js"
+      ]
+    },
+    {
+      "id": 354,
+      "files": [
+        "354.bundle.css",
+        "354.bundle.js"
+      ]
+    },
+    {
+      "id": 648,
+      "files": [
+        "648.bundle.js"
+      ]
+    }
+  ]
+}
