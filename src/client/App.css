@@ -1,3 +1,12 @@
 .bismillah {
     background-color: rgb(204, 185, 15);
 }
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}

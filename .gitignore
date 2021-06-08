@@ -1,6 +1,6 @@
 # env and lib
 .env
-lib/
+build/
 # Logs
 logs
 *.log

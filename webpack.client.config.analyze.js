@@ -6,15 +6,17 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const sharedConfig = require('./webpack.shared.config.js');
 
 const clientPort = process.env.PORT || 8080;
+const entryPath = path.join(__dirname, './build/client')
 
 const config = {
     target: 'web',
 
-    entry: './src/client/index.js', // [A]
+    // entry: './src/client/index.js', // [A]
+    entry: ['@babel/polyfill', 'react-hot-loader/patch', './src/client/index.js'], // [A]
 
     output: {
         // path: path.join(__dirname, './build/client'), // [B]
-        path: path.resolve(__dirname, 'public'),
+        path: entryPath, // [B]
         filename: 'bundle.js',
         publicPath: '/', // [C]
         // filename: 'scripts/bundle.js', // [B]
@@ -28,9 +30,9 @@ const config = {
 
     module: {
         rules: [{
-            test: /\.css$/, // [D]
+            test: /\.m?(css|scss|sass)$/,
             use: [
-                'style-loader',
+                // 'style-loader',
                 MiniCssExtractPlugin.loader,
                 {
                     loader: 'css-loader',
@@ -41,6 +43,7 @@ const config = {
                         },
                     },
                 },
+                'sass-loader'
             ],
         }],
     },
@@ -49,7 +52,7 @@ const config = {
         new MiniCssExtractPlugin({ 
             filename: 'bundle.css', // [D]
         }),
-        new LoadablePlugin(),
+        // new LoadablePlugin(),
         new BundleAnalyzerPlugin(),
     ],
     mode : 'production',

@@ -6,7 +6,8 @@ const sharedConfig = require('./webpack.shared.config.js');
 let config = {
     target: 'node', // [A]
 
-    entry: './src/server/index.js', // [B]
+    // entry: './src/server/index.js', // [B]
+    entry: ['@babel/polyfill', './src/server/index.js'],
 
     output: { // [C]
         path: path.join(__dirname, './build/server'), 
@@ -17,7 +18,7 @@ let config = {
 
     module: {
         rules: [{
-            test: /\.css$/, // [E]
+            test: /\.m?(css|scss|sass)$/,
             use: [
                 {
                     loader: 'css-loader',
@@ -29,6 +30,7 @@ let config = {
                         },
                     }
                 },
+                'sass-loader'
             ]
         }],
     },
